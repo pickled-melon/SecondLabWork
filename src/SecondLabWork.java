@@ -1,7 +1,13 @@
 public class SecondLabWork {
+    static final String MSG_NOT_ENOUGH_ARGS = "Недостаточно аргументов!";
     static final String MSG_WRONG_TASK_NUMBER = "Некорректный номер задания! Допустимый набор номеров заданий: {a, b, c ,d}";
 
     public static void main(String[] args) {
+        if (args.length < 2) {
+            System.out.println(MSG_NOT_ENOUGH_ARGS);
+            System.exit(1);
+        }
+
         Sentence sentence = new Sentence();
 
         switch (args[0]) {
