@@ -17,14 +17,19 @@ public class SecondLabWork {
                 sentence.setSentence(args[1]);
 
                 System.out.println("Возможные комбинации из 2 слов:");
-                sentence.printCombinationsOfTwoWords();
+                String[] arrayOfCombinationsOfTwoWords = sentence.getArrayOfCombinationsOfTwoWords();
+
+                for (int i = 0; i < arrayOfCombinationsOfTwoWords.length; i++) {
+                    System.out.println(i + ". " + arrayOfCombinationsOfTwoWords[i]);
+                }
+
                 break;
             case "b":
                 System.out.println("Текст задания\nОпределите количество возможных комбинаций из трех слов заданного предложения");
 
                 sentence.setSentence(args[1]);
 
-                System.out.println("Число возможных комбинациий из трёх слов (число размещений) равно " + sentence.getCountOfCombinationsOfThreeWords());
+                System.out.println("Число возможных комбинациий из трёх слов (число размещений) равно " + sentence.getCountOfCombinationsOfNWords(3));
                 break;
             case "c":
                 System.out.println("Текст задания\nДан одномерный числовой вещественный массив, определить число всевозможных комбинаций из двух элементов данного массива таким образом чтобы первый элемент в паре был меньше второго более чем в два раза");

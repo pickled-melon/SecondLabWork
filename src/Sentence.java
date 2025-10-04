@@ -108,37 +108,45 @@ public class Sentence {
     }
 
     /**
-     * Процедура печати на экран комбинаций двух слов
+     * Функция получения комбинаций из двух слов
+     * @return Массив строк, состоящих из 2 слов, разделённых пробелом
      * */
-    public void printCombinationsOfTwoWords() {
-        if (words.length < 2) {
-            System.out.println(MSG_SNTNC_REQUIRES_MIN_TWO_WORDS);
-            System.exit(1);
-        }
+    public String[]  getArrayOfCombinationsOfTwoWords() {
+        int countOfCombinations = getCountOfCombinationsOfNWords(2);
+
+        String[] arrayOfCombinationsOfTwoWords = new String[countOfCombinations];
 
         int combinationNumber = 0;
 
         for (int i = 0; i < words.length; i++)
             for (int j = 0; j < words.length; j++)
                 if (i != j) {
-                    System.out.println(combinationNumber + ". " + words[i] + " " + words[j]);
+                    arrayOfCombinationsOfTwoWords[combinationNumber] = words[i] + " " + words[j];
                     combinationNumber++;
                 }
+
+        return arrayOfCombinationsOfTwoWords;
     }
 
     /**
-     * Функция подсчёта и получения количества комбинаций из 3 слов
-     * @return Количество комбинаций из 3 слов
+     * Функция подсчёта и получения количества комбинаций из N слов
+     * @return Количество комбинаций из N слов
      * */
-    public int getCountOfCombinationsOfThreeWords() {
+    public int getCountOfCombinationsOfNWords(int n) {
         int wordsLength = words.length;
 
-        if (wordsLength < 3) {
-            System.out.println(MSG_SNTNC_REQUIRES_MIN_THREE_WORDS);
+        if (wordsLength < n) {
+            System.out.println(MSG_SNTNC_REQUIRES_MIN_TWO_WORDS);
             System.exit(1);
         }
 
-        return wordsLength * (wordsLength - 1) * (wordsLength - 2);
+        int countOfCombinations = wordsLength;
+
+        for (int i = 1; i < n; i++) {
+            countOfCombinations *= (wordsLength - i);
+        }
+
+        return countOfCombinations;
     }
 
     /**
